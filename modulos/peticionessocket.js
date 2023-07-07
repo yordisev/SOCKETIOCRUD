@@ -2,6 +2,7 @@ const crearusuario = (socket, db) => {
     socket.on('create', (data) => {
       const { usuario, token } = data;
       const query = 'INSERT INTO usuarios_token (usuario_id, token) VALUES (?, ?)';
+    //   const query = 'CALL nombre_procedimiento(?, ?)';
       db.query(query, [usuario, token], (err, result) => {
         if (err) {
           socket.emit('crearusuario', err.message);
